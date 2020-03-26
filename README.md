@@ -12,16 +12,16 @@ base_url/players/playerShortName //playerShortName in lowercase characters
 
 List of player short names:
 
-Lehmann
-Henry
-Begrkamp
-Vieria
-Lauren
-Cole
-Campbell
-Toure
-Silva
-Pieres
+- Lehmann
+- Henry
+- Begrkamp
+- Vieria
+- Lauren
+- Cole
+- Campbell
+- Toure
+- Silva
+- Pieres
 
 ###Get all results In order to get all of FC Barcelona results this season, no matter what the competition, make a call to:
 
