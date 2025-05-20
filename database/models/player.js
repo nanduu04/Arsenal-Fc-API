@@ -33,7 +33,14 @@ var Player = mongoose.model('Player', {
     type: String,
     required: true,
     minLength: 5,
-    trim: true
+    trim: true,
+    validate: {
+      validator: function(v) {
+        // Validate date format (MM/DD/YYYY)
+        return /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/.test(v);
+      },
+      message: props => `${props.value} is not a valid date format! Use format: MM/DD/YYYY`
+    }
   },
 
   height: {
@@ -46,44 +53,57 @@ var Player = mongoose.model('Player', {
   weight: {
     type: Number,
     required: true,
-    min: 120,
+    min: 50,
   },
 
   jerseyNumber: {
     type: Number,
     required: true,
-    minLength: 0,
+    min: 1,
+    max: 99
   },
 
   position: {
     type: String,
     required: true,
     minLength: 1,
-    trim: true
+    trim: true,
+    enum: ['Goalkeeper', 'Defender', 'Midfielder', 'Forward', 'Striker', 'Left Back', 'Right Back', 'Centre Back', 'Defensive Midfielder', 'Center Midfielder', 'Left Wing', 'Right Wing', 'Attacking Midfielder']
   },
 
-  Goals: {
+  goals: {
     type: Number,
     required: true,
     min: 0,
+    default: 0
   },
 
-  Assists: {
+  penalties: {
     type: Number,
     required: true,
     min: 0,
+    default: 0
   },
 
-  Clearances: {
+  assists: {
     type: Number,
     required: true,
     min: 0,
+    default: 0
+  },
+
+  clearances: {
+    type: Number,
+    required: true,
+    min: 0,
+    default: 0
   },
   
-  Recoveries: {
+  recoveries: {
     type: Number,
     required: true,
     min: 0,
+    default: 0
   },
 
 });
